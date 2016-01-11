@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<display-name></display-name>
+	<servlet>
+		<servlet-name>UserServlet</servlet-name>
+		<servlet-class>com.csit.action.UserServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>com.csit.action.LoginServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>MeetingServlet</servlet-name>
+		<servlet-class>com.csit.action.MeetingServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>PowerServlet</servlet-name>
+		<servlet-class>com.csit.action.PowerServlet</servlet-class>
+	</servlet>
+  <servlet>
+    <servlet-name>ImgServlet</servlet-name>
+    <servlet-class>com.csit.action.ImgServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DepartmentServlet</servlet-name>
+    <servlet-class>com.csit.action.DepartmentServlet</servlet-class>
+  </servlet>
+
+
+	<servlet-mapping>
+		<servlet-name>UserServlet</servlet-name>
+		<url-pattern>/User.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MeetingServlet</servlet-name>
+		<url-pattern>/Meeting.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PowerServlet</servlet-name>
+		<url-pattern>/Power.do</url-pattern>
+	</servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ImgServlet</servlet-name>
+    <url-pattern>/Img.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DepartmentServlet</servlet-name>
+    <url-pattern>/Department.do</url-pattern>
+  </servlet-mapping>
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>com.csit.filter.CharacterEncodingFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter>
+		<filter-name>loginFilter</filter-name>
+		<filter-class>com.csit.filter.LoginFilter</filter-class>
+		<init-param>
+			<param-name>input</param-name>
+			<param-value>/meeting/login.html</param-value>
+		
+		</init-param>
+		<init-param>
+			<param-name>uninclude</param-name>
+			<param-value>.js;.css;.jpg;.png;.grf</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>loginFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	  <filter>
+  	<filter-name>GzipFilter</filter-name>
+  	<filter-class>com.csit.filter.GzipFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>GzipFilter</filter-name>
+  	<url-pattern>*.jsp</url-pattern>
+  	<dispatcher>FORWARD</dispatcher>
+  	<dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  <session-config>
+<session-timeout>120</session-timeout>
+</session-config>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
